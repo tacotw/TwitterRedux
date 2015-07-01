@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TweetsViewController">
             <connections>
+                <outlet property="tableView" destination="3bL-28-fNn" id="xxx-3H-BLG"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -14,17 +15,42 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="btz-NW-ZaG">
-                    <rect key="frame" x="54" y="156" width="49" height="30"/>
-                    <state key="normal" title="Logout">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="onLogout:" destination="-1" eventType="touchUpInside" id="PUq-TY-hCN"/>
-                    </connections>
-                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="3bL-28-fNn">
+                    <rect key="frame" x="0.0" y="60" width="600" height="540"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pjW-hZ-6sx">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="hL9-Ry-v2C"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="barTintColor" red="0.40799995060836391" green="0.68639782725729281" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <textAttributes key="titleTextAttributes">
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </textAttributes>
+                    <items>
+                        <navigationItem title="Home" id="xNg-bp-bYB">
+                            <barButtonItem key="leftBarButtonItem" title="Sign Out" id="cZJ-W7-sv6">
+                                <connections>
+                                    <action selector="onLogout:" destination="-1" id="aAS-6c-QIS"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem key="rightBarButtonItem" title="New" id="xDE-d9-ms1"/>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="pjW-hZ-6sx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Qpg-i2-7cN"/>
+                <constraint firstAttribute="bottom" secondItem="3bL-28-fNn" secondAttribute="bottom" id="TS6-r4-dbe"/>
+                <constraint firstItem="pjW-hZ-6sx" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="WLi-aL-6w7"/>
+                <constraint firstItem="3bL-28-fNn" firstAttribute="top" secondItem="pjW-hZ-6sx" secondAttribute="bottom" id="YhH-tC-Ikz"/>
+                <constraint firstAttribute="trailing" secondItem="3bL-28-fNn" secondAttribute="trailing" id="aWy-SN-ouJ"/>
+                <constraint firstAttribute="trailing" secondItem="pjW-hZ-6sx" secondAttribute="trailing" id="tM4-0p-yar"/>
+                <constraint firstItem="3bL-28-fNn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="zVa-YL-6e8"/>
+            </constraints>
         </view>
     </objects>
 </document>
