@@ -7,7 +7,6 @@
 //
 
 #import "TwitterClient.h"
-#import "Tweet.h"
 
 NSString * const kTwitterConsumerKey = @"8dgSbQwFVTArqOFiNORFCopqr";
 NSString * const kTwitterConsumerSecret = @"RLzhYWoOVAXaeg2L9nte9jrZ0h0IJwWOPQLm1yYIKg1WxT1I3f";
@@ -76,13 +75,45 @@ NSString * const kTwitterBaseUrl = @"https://api.twitter.com";
 - (void)homeTimelineWithParams:(NSDictionary *)params completion:(void (^)(NSArray *tweets, NSError *error))completion {
     
      [self GET:@"1.1/statuses/home_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-         //NSLog(@"%@", responseObject);
          NSArray *tweets = [Tweet tweetsWithArray:responseObject];
          completion(tweets, nil);
      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"error getting tweets");
          completion(nil, error);
      }];
+}
+
+- (void)newWithParams:(NSDictionary *)params completion:(void (^)(Tweet *tweet, NSError *error))completion {
+    
+    [self POST:@"1.1/statuses/update.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        Tweet *tweet = [[Tweet alloc] initWithDictionary:responseObject];
+        completion(tweet, nil);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error updating tweet");
+        completion(nil, error);
+    }];
+}
+
+- (void)retweetWithId:(NSString *)retweetId completion:(void (^)(Tweet *tweet, NSError *error))completion {
+
+    [self POST:[NSString stringWithFormat:@"1.1/statuses/retweet/%@.json", retweetId] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        Tweet *tweet = [[Tweet alloc] initWithDictionary:responseObject];
+        completion(tweet, nil);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error updating tweet");
+        completion(nil, error);
+    }];
+}
+
+- (void)favoriteWithParams:(NSDictionary *)params completion:(void (^)(Tweet *tweet, NSError *error))completion {
+    
+    [self POST:@"1.1/favorites/create.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        Tweet *tweet = [[Tweet alloc] initWithDictionary:responseObject];
+        completion(tweet, nil);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error favorite tweet");
+        completion(nil, error);
+    }];
 }
 
 @end

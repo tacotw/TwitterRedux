@@ -11,11 +11,12 @@
 #import "Tweet.h"
 #import "TwitterClient.h"
 #import "TweetCell.h"
-#import <UIImageView+AFNetworking.h>
+#import "NewViewController.h"
 
-@interface TweetsViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface TweetsViewController () <UITableViewDelegate, UITableViewDataSource, NewViewControllerDelegate, TweetCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic, strong) NSMutableArray *tweets;
 
 @end
@@ -32,11 +33,24 @@
     self.tableView.estimatedRowHeight = 100;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
+    
+    self.refreshControl = [[UIRefreshControl alloc]init];
+    [self.tableView addSubview:self.refreshControl];
+    [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
+    
+    [self getHomeTimeline];
+}
+
+- (void)getHomeTimeline {
     [[TwitterClient sharedInstance] homeTimelineWithParams:nil completion:^(NSArray *tweets, NSError *error) {
-        //self.tweets = [NSMutableArray array];
         self.tweets = [[NSMutableArray alloc] initWithArray:tweets];
         [self.tableView reloadData];
     }];
+}
+
+- (void)refreshTable {
+    [self.refreshControl endRefreshing];
+    [self getHomeTimeline];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,6 +62,10 @@
     [User logout];
 }
 
+- (IBAction)onNew:(id)sender {
+    [self presentViewController:[[NewViewController alloc] init] animated:YES completion:nil];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -57,34 +75,50 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell" forIndexPath:indexPath];
     
-    Tweet *tweet = [self.tweets objectAtIndex:indexPath.row];
-    [cell.profileImageView setImageWithURL:[NSURL URLWithString:tweet.user.profileImageUrl]];
-    cell.nameLabel.text = tweet.user.name;
-    cell.screenNameLabel.text = [NSString stringWithFormat:@"@%@", tweet.user.screenName];
-    cell.contentLabel.text = tweet.text;
-    
-    NSDate *now = [NSDate date];
-    NSTimeInterval secondsBetween = [now timeIntervalSinceDate:tweet.createdAt];
-    int numberOfHours = secondsBetween / 3600;
-    if (numberOfHours < 24) {
-        int numberOfMins = secondsBetween / 60;
-        if (numberOfMins == 0) {
-            cell.createdAtLabel.text = [NSString stringWithFormat:@"%dm", (int)secondsBetween];
-        }
-        else if (numberOfMins < 60) {
-            cell.createdAtLabel.text = [NSString stringWithFormat:@"%dm", numberOfMins];
-        }
-        else {
-            cell.createdAtLabel.text = [NSString stringWithFormat:@"%dh", numberOfHours];
-        }
-    }
-    else {
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        formatter.dateFormat = @"y/m/d";
-        cell.createdAtLabel.text = [formatter stringFromDate:tweet.createdAt];
-    }
+    cell.tweet = [self.tweets objectAtIndex:indexPath.row];
+    [cell didLoad];
+    cell.delegate = self;
     
     return cell;
+}
+
+#pragma mark - NewViewControllerDelegate
+
+- (void)NewViewController:(NewViewController *)NewViewController tweet:(Tweet *)tweet {
+
+}
+
+#pragma mark - TweetCellDelegate
+
+- (void)TweetCell:(TweetCell *)cell replyTweet:(Tweet *)tweet {
+    NewViewController *vc = [[NewViewController alloc] init];
+    vc.replyTweet = tweet;
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
+- (void)TweetCell:(TweetCell *)cell retweet:(Tweet *)tweet {
+    [[TwitterClient sharedInstance] retweetWithId:tweet.idStr completion:^(Tweet *tweet, NSError *error) {
+        if (error == nil) {
+            [cell.retweetButton setImage:[UIImage imageNamed:@"retweetOnIcon"] forState:UIControlStateNormal];
+        }
+        else {
+            NSLog(@"retweet Error: %@", error);
+        }
+    }];
+}
+
+- (void)TweetCell:(TweetCell *)cell favoriteTweet:(Tweet *)tweet {
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:tweet.idStr forKey:@"id"];
+    [[TwitterClient sharedInstance] favoriteWithParams:params completion:^(Tweet *tweet, NSError *error) {
+        
+        if (error == nil) {
+            [cell.favoriteButton setImage:[UIImage imageNamed:@"starOnIcon"] forState:UIControlStateNormal];
+        }
+        else {
+            NSLog(@"favorite Error: %@", error);
+        }
+    }];
 }
 
 /*

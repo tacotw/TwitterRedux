@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewViewController">
+            <connections>
+                <outlet property="canEditingLengthLabel" destination="jUv-7R-sRn" id="59J-cl-MGB"/>
+                <outlet property="contentText" destination="9CO-9K-MQU" id="wdU-PI-PSa"/>
+                <outlet property="nameLabel" destination="tl0-y1-bgE" id="vC7-KU-TXA"/>
+                <outlet property="profileImageView" destination="Mdj-uE-TqG" id="JbT-vV-wl1"/>
+                <outlet property="screenNameLabel" destination="SFf-w5-vs9" id="PKv-kb-0sh"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fvF-re-jUT">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="752-9J-zCn"/>
+                    </constraints>
+                    <items>
+                        <navigationItem id="JdY-zi-szq">
+                            <barButtonItem key="leftBarButtonItem" title="Cancel" id="TNV-Rs-SSJ">
+                                <connections>
+                                    <action selector="onCancel:" destination="-1" id="EPl-Sv-yha"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem key="rightBarButtonItem" title="Tweet" id="PeE-S2-ewC">
+                                <connections>
+                                    <action selector="onTweet:" destination="-1" id="mtL-tE-7ix"/>
+                                </connections>
+                            </barButtonItem>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="140" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jUv-7R-sRn">
+                    <rect key="frame" x="499" y="27" width="29" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="dO5-iH-i4y"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tl0-y1-bgE">
+                    <rect key="frame" x="72" y="68" width="38.5" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="KXC-6r-fRK"/>
+                        <constraint firstAttribute="height" constant="21" id="gkf-rB-4Eg"/>
+                        <constraint firstAttribute="width" constant="46" id="xeq-MY-HM2"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="KXC-6r-fRK"/>
+                            <exclude reference="gkf-rB-4Eg"/>
+                            <exclude reference="xeq-MY-HM2"/>
+                        </mask>
+                    </variation>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SFf-w5-vs9">
+                    <rect key="frame" x="72" y="93" width="40.5" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mdj-uE-TqG">
+                    <rect key="frame" x="16" y="68" width="48" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="FBX-Ca-fv4"/>
+                        <constraint firstAttribute="width" constant="48" id="vDu-d2-mTh"/>
+                    </constraints>
+                </imageView>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9CO-9K-MQU">
+                    <rect key="frame" x="16" y="124" width="568" height="460"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="jUv-7R-sRn" secondAttribute="trailing" constant="72" id="0TG-o2-1en"/>
+                <constraint firstAttribute="trailing" secondItem="jUv-7R-sRn" secondAttribute="trailing" constant="71" id="5pr-oR-hVl"/>
+                <constraint firstItem="jUv-7R-sRn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="27" id="5u5-UJ-Iud"/>
+                <constraint firstItem="tl0-y1-bgE" firstAttribute="leading" secondItem="Mdj-uE-TqG" secondAttribute="trailing" constant="8" id="Dcq-zS-KaR"/>
+                <constraint firstItem="Mdj-uE-TqG" firstAttribute="top" secondItem="tl0-y1-bgE" secondAttribute="top" id="EVG-SH-NrU"/>
+                <constraint firstItem="tl0-y1-bgE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="184" id="KFv-Q9-OEC"/>
+                <constraint firstItem="fvF-re-jUT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Kzj-Vi-blg"/>
+                <constraint firstAttribute="trailing" secondItem="9CO-9K-MQU" secondAttribute="trailing" constant="16" id="LUv-9v-whz"/>
+                <constraint firstItem="9CO-9K-MQU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="Lbw-yu-m35"/>
+                <constraint firstItem="SFf-w5-vs9" firstAttribute="top" secondItem="tl0-y1-bgE" secondAttribute="bottom" constant="8" id="O6j-HU-Mxp"/>
+                <constraint firstItem="Mdj-uE-TqG" firstAttribute="top" secondItem="fvF-re-jUT" secondAttribute="bottom" constant="8" id="Oa0-zx-Ct2"/>
+                <constraint firstItem="fvF-re-jUT" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="YnG-Cs-gl8"/>
+                <constraint firstItem="tl0-y1-bgE" firstAttribute="leading" secondItem="Mdj-uE-TqG" secondAttribute="trailing" constant="8" symbolic="YES" id="fEQ-5j-S5v"/>
+                <constraint firstItem="SFf-w5-vs9" firstAttribute="leading" secondItem="Mdj-uE-TqG" secondAttribute="trailing" constant="8" id="fIb-VI-XeQ"/>
+                <constraint firstItem="Mdj-uE-TqG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="imx-il-NIL"/>
+                <constraint firstItem="SFf-w5-vs9" firstAttribute="leading" secondItem="tl0-y1-bgE" secondAttribute="trailing" constant="84" id="l7K-UQ-Ukd"/>
+                <constraint firstItem="tl0-y1-bgE" firstAttribute="top" secondItem="fvF-re-jUT" secondAttribute="bottom" constant="8" id="nWO-Th-EeQ"/>
+                <constraint firstAttribute="trailing" secondItem="fvF-re-jUT" secondAttribute="trailing" id="pAA-aD-daO"/>
+                <constraint firstAttribute="bottom" secondItem="9CO-9K-MQU" secondAttribute="bottom" constant="16" id="sS4-Ue-ANA"/>
+                <constraint firstItem="9CO-9K-MQU" firstAttribute="top" secondItem="Mdj-uE-TqG" secondAttribute="bottom" constant="8" id="tz8-RR-nz3"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="KFv-Q9-OEC"/>
+                    <exclude reference="fEQ-5j-S5v"/>
+                    <exclude reference="l7K-UQ-Ukd"/>
+                    <exclude reference="5pr-oR-hVl"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+</document>
