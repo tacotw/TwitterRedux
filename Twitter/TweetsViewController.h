@@ -8,6 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@class TweetsViewController;
+
+@protocol TweetsViewControllerDelegate <NSObject>
+
+- (void)movePanelRight;
+
+- (void)movePanelToOriginalPosition;
+
+@end
+
 @interface TweetsViewController : UIViewController
+
+@property (nonatomic, assign) id<TweetsViewControllerDelegate> delegate;
 
 @end

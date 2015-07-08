@@ -46,6 +46,7 @@
                 </navigationBar>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="pjW-hZ-6sx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Qpg-i2-7cN"/>
                 <constraint firstAttribute="bottom" secondItem="3bL-28-fNn" secondAttribute="bottom" id="TS6-r4-dbe"/>
@@ -55,6 +56,20 @@
                 <constraint firstAttribute="trailing" secondItem="pjW-hZ-6sx" secondAttribute="trailing" id="tM4-0p-yar"/>
                 <constraint firstItem="3bL-28-fNn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="zVa-YL-6e8"/>
             </constraints>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="SAr-rb-P0S" appends="YES" id="V0O-Cv-IfU"/>
+                <outletCollection property="gestureRecognizers" destination="cEI-0W-gha" appends="YES" id="bEV-JY-9Nb"/>
+            </connections>
         </view>
+        <tapGestureRecognizer id="SAr-rb-P0S">
+            <connections>
+                <action selector="onTap:" destination="-1" id="WPJ-fd-cGm"/>
+            </connections>
+        </tapGestureRecognizer>
+        <panGestureRecognizer minimumNumberOfTouches="1" id="cEI-0W-gha">
+            <connections>
+                <action selector="onDrag:" destination="-1" id="Gka-nd-LhV"/>
+            </connections>
+        </panGestureRecognizer>
     </objects>
 </document>

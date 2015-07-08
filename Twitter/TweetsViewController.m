@@ -12,8 +12,10 @@
 #import "TwitterClient.h"
 #import "TweetCell.h"
 #import "NewViewController.h"
+#import "MenuViewController.h"
+#import "ProfileViewController.h"
 
-@interface TweetsViewController () <UITableViewDelegate, UITableViewDataSource, NewViewControllerDelegate, TweetCellDelegate>
+@interface TweetsViewController () <UITableViewDelegate, UITableViewDataSource, NewViewControllerDelegate, TweetCellDelegate, MenuViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
@@ -65,6 +67,15 @@
 - (IBAction)onNew:(id)sender {
     [self presentViewController:[[NewViewController alloc] init] animated:YES completion:nil];
 }
+
+- (IBAction)onTap:(UITapGestureRecognizer *)sender {
+    [self.delegate movePanelToOriginalPosition];
+}
+
+- (IBAction)onDrag:(UIPanGestureRecognizer *)sender {
+    [self.delegate movePanelRight];
+}
+
 
 #pragma mark - Table view data source
 
@@ -119,6 +130,12 @@
             NSLog(@"favorite Error: %@", error);
         }
     }];
+}
+
+- (void)TweetCell:(TweetCell *)cell userProfile:(User *)user {
+    ProfileViewController * profileVC = [[ProfileViewController alloc] init];
+    profileVC.user = user;
+    [self presentViewController:profileVC animated:YES completion:nil];
 }
 
 /*

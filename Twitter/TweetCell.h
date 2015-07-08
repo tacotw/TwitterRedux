@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Tweet.h"
+#import "User.h"
 
 @class TweetCell;
 
@@ -16,6 +17,7 @@
 - (void)TweetCell:(TweetCell *)cell replyTweet:(Tweet *)tweet;
 - (void)TweetCell:(TweetCell *)cell retweet:(Tweet *)tweet;
 - (void)TweetCell:(TweetCell *)cell favoriteTweet:(Tweet *)tweet;
+//- (void)TweetCell:(TweetCell *)cell userProfile:(User *)user;
 
 @end
 

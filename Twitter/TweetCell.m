@@ -65,4 +65,8 @@
     [self.delegate TweetCell:self favoriteTweet:self.tweet];
 }
 
+- (IBAction)onTapProfileImage:(UITapGestureRecognizer *)sender {
+    [self.delegate TweetCell:self userProfile:self.tweet.user];
+}
+
 @end

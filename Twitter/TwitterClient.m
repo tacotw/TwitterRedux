@@ -72,13 +72,28 @@ NSString * const kTwitterBaseUrl = @"https://api.twitter.com";
 
 }
 
+- (void)userProfile:(NSDictionary *)params completion:(void (^)(User *user, NSError *error))completion {
+    
+    [self GET:@"1.1/account/verify_credentials.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        User *user = [[User alloc] initWithDictionary:responseObject];
+        NSLog(@"current user: %@", user.name);
+        
+        [User setCurrentUser:user];
+        completion(user, nil);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error getting verify_credentials.json");
+        completion(nil, error);
+    }];
+}
+
+
 - (void)homeTimelineWithParams:(NSDictionary *)params completion:(void (^)(NSArray *tweets, NSError *error))completion {
     
      [self GET:@"1.1/statuses/home_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
          NSArray *tweets = [Tweet tweetsWithArray:responseObject];
          completion(tweets, nil);
      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         NSLog(@"error getting tweets");
+         NSLog(@"error getting home tweets");
          completion(nil, error);
      }];
 }
@@ -112,6 +127,17 @@ NSString * const kTwitterBaseUrl = @"https://api.twitter.com";
         completion(tweet, nil);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error favorite tweet");
+        completion(nil, error);
+    }];
+}
+
+- (void)mentionsTimelineWithParams:(NSDictionary *)params completion:(void (^)(NSArray *tweets, NSError *error))completion {
+    
+    [self GET:@"1.1/statuses/mentions_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSArray *tweets = [Tweet tweetsWithArray:responseObject];
+        completion(tweets, nil);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error getting mentions tweets");
         completion(nil, error);
     }];
 }

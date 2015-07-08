@@ -13,6 +13,14 @@
 		014E07C21B423BF100AC9288 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 014E07C11B423BF100AC9288 /* User.m */; };
 		014E07C61B428B7900AC9288 /* TweetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 014E07C41B428B7900AC9288 /* TweetsViewController.m */; };
 		014E07C71B428B7900AC9288 /* TweetsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 014E07C51B428B7900AC9288 /* TweetsViewController.xib */; };
+		01542ADE1B4BD2920015446B /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01542ADC1B4BD2920015446B /* MenuViewController.m */; };
+		01542ADF1B4BD2920015446B /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01542ADD1B4BD2920015446B /* MenuViewController.xib */; };
+		01542AE31B4BE6990015446B /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01542AE11B4BE6990015446B /* MainViewController.m */; };
+		01542AE41B4BE6990015446B /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01542AE21B4BE6990015446B /* MainViewController.xib */; };
+		01542AE81B4CD77C0015446B /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01542AE61B4CD77C0015446B /* MenuCell.m */; };
+		01542AE91B4CD77C0015446B /* MenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01542AE71B4CD77C0015446B /* MenuCell.xib */; };
+		01542AED1B4D2AFD0015446B /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01542AEB1B4D2AFD0015446B /* ProfileViewController.m */; };
+		01542AEE1B4D2AFD0015446B /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01542AEC1B4D2AFD0015446B /* ProfileViewController.xib */; };
 		016106BD1B42AF6B0039CE44 /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 016106BB1B42AF6B0039CE44 /* TweetCell.m */; };
 		016106BE1B42AF6B0039CE44 /* TweetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 016106BC1B42AF6B0039CE44 /* TweetCell.xib */; };
 		01797B331B4154AD008B8F58 /* TwitterClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 01797B321B4154AD008B8F58 /* TwitterClient.m */; };
@@ -47,6 +55,18 @@
 		014E07C31B428B7900AC9288 /* TweetsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetsViewController.h; sourceTree = "<group>"; };
 		014E07C41B428B7900AC9288 /* TweetsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetsViewController.m; sourceTree = "<group>"; };
 		014E07C51B428B7900AC9288 /* TweetsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweetsViewController.xib; sourceTree = "<group>"; };
+		01542ADB1B4BD2920015446B /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		01542ADC1B4BD2920015446B /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		01542ADD1B4BD2920015446B /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
+		01542AE01B4BE6990015446B /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		01542AE11B4BE6990015446B /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		01542AE21B4BE6990015446B /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		01542AE51B4CD77C0015446B /* MenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuCell.h; sourceTree = "<group>"; };
+		01542AE61B4CD77C0015446B /* MenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuCell.m; sourceTree = "<group>"; };
+		01542AE71B4CD77C0015446B /* MenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuCell.xib; sourceTree = "<group>"; };
+		01542AEA1B4D2AFD0015446B /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		01542AEB1B4D2AFD0015446B /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		01542AEC1B4D2AFD0015446B /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		016106BA1B42AF6B0039CE44 /* TweetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetCell.h; sourceTree = "<group>"; };
 		016106BB1B42AF6B0039CE44 /* TweetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetCell.m; sourceTree = "<group>"; };
 		016106BC1B42AF6B0039CE44 /* TweetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweetCell.xib; sourceTree = "<group>"; };
@@ -143,6 +163,18 @@
 				010DFA7F1B43F6D400905DC5 /* NewViewController.h */,
 				010DFA801B43F6D400905DC5 /* NewViewController.m */,
 				010DFA811B43F6D400905DC5 /* NewViewController.xib */,
+				01542ADB1B4BD2920015446B /* MenuViewController.h */,
+				01542ADC1B4BD2920015446B /* MenuViewController.m */,
+				01542ADD1B4BD2920015446B /* MenuViewController.xib */,
+				01542AE01B4BE6990015446B /* MainViewController.h */,
+				01542AE11B4BE6990015446B /* MainViewController.m */,
+				01542AE21B4BE6990015446B /* MainViewController.xib */,
+				01542AE51B4CD77C0015446B /* MenuCell.h */,
+				01542AE61B4CD77C0015446B /* MenuCell.m */,
+				01542AE71B4CD77C0015446B /* MenuCell.xib */,
+				01542AEA1B4D2AFD0015446B /* ProfileViewController.h */,
+				01542AEB1B4D2AFD0015446B /* ProfileViewController.m */,
+				01542AEC1B4D2AFD0015446B /* ProfileViewController.xib */,
 			);
 			path = Twitter;
 			sourceTree = "<group>";
@@ -275,8 +307,12 @@
 				014E07C71B428B7900AC9288 /* TweetsViewController.xib in Resources */,
 				010DFA831B43F6D400905DC5 /* NewViewController.xib in Resources */,
 				016106BE1B42AF6B0039CE44 /* TweetCell.xib in Resources */,
+				01542AE91B4CD77C0015446B /* MenuCell.xib in Resources */,
+				01542AE41B4BE6990015446B /* MainViewController.xib in Resources */,
 				01DE4C911B414918002AB6B1 /* LaunchScreen.xib in Resources */,
 				01DE4C8E1B414918002AB6B1 /* Images.xcassets in Resources */,
+				01542ADF1B4BD2920015446B /* MenuViewController.xib in Resources */,
+				01542AEE1B4D2AFD0015446B /* ProfileViewController.xib in Resources */,
 				01797B3B1B4157F1008B8F58 /* LoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -328,15 +364,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01542AE31B4BE6990015446B /* MainViewController.m in Sources */,
 				01797B3A1B4157F1008B8F58 /* LoginViewController.m in Sources */,
+				01542AE81B4CD77C0015446B /* MenuCell.m in Sources */,
 				01797B331B4154AD008B8F58 /* TwitterClient.m in Sources */,
 				014E07C21B423BF100AC9288 /* User.m in Sources */,
 				014E07BF1B423BE100AC9288 /* Tweet.m in Sources */,
 				01DE4C861B414918002AB6B1 /* AppDelegate.m in Sources */,
 				01DE4C831B414918002AB6B1 /* main.m in Sources */,
 				010DFA821B43F6D400905DC5 /* NewViewController.m in Sources */,
+				01542AED1B4D2AFD0015446B /* ProfileViewController.m in Sources */,
 				014E07C61B428B7900AC9288 /* TweetsViewController.m in Sources */,
 				016106BD1B42AF6B0039CE44 /* TweetCell.m in Sources */,
+				01542ADE1B4BD2920015446B /* MenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

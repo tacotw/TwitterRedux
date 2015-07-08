@@ -27,6 +27,10 @@ NSString * const UserDidLogoutNotification = @"UserDidLogoutNotification";
         self.screenName = dictionary[@"screen_name"];
         self.profileImageUrl = dictionary[@"profile_image_url"];
         self.tagline = dictionary[@"description"];
+        self.tweetsCount = [dictionary[@"statuses_count"] integerValue];
+        self.followingCount = [dictionary[@"friends_count"] integerValue];
+        self.followersCount = [dictionary[@"followers_count"] integerValue];
+        self.bgImageUrl = dictionary[@"profile_background_image_url"];
         self.dictionary = dictionary;
     }
     
@@ -45,6 +49,8 @@ NSString * const kCurrentUserKey = @"kCurrentUserKey";
             _currentUser = [[User alloc] initWithDictionary:dictionary];
         }
     }
+    
+    NSLog(@"%@", _currentUser.dictionary);
     return _currentUser;
 }
 
