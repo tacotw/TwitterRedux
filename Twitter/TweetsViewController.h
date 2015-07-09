@@ -12,14 +12,16 @@
 
 @protocol TweetsViewControllerDelegate <NSObject>
 
-- (void)movePanelRight;
+- (void)movePanelRight:(NSInteger)pageType;
 
-- (void)movePanelToOriginalPosition;
+- (void)movePanelToOriginalPosition:(NSInteger)pageType isReload:(BOOL)isReload;
 
 @end
 
 @interface TweetsViewController : UIViewController
 
 @property (nonatomic, assign) id<TweetsViewControllerDelegate> delegate;
+@property (nonatomic, assign) NSInteger pageType;
 
+- (void)reloadView;
 @end

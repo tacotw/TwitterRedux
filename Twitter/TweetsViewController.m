@@ -12,10 +12,12 @@
 #import "TwitterClient.h"
 #import "TweetCell.h"
 #import "NewViewController.h"
-#import "MenuViewController.h"
 #import "ProfileViewController.h"
 
-@interface TweetsViewController () <UITableViewDelegate, UITableViewDataSource, NewViewControllerDelegate, TweetCellDelegate, MenuViewControllerDelegate>
+#define HOME_TWEETS_TAG 1
+#define MENTIONS_TWEETS_TAG 2
+
+@interface TweetsViewController () <UITableViewDelegate, UITableViewDataSource, NewViewControllerDelegate, TweetCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
@@ -40,7 +42,16 @@
     [self.tableView addSubview:self.refreshControl];
     [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
     
-    [self getHomeTimeline];
+    [self reloadView];
+}
+
+- (void)reloadView {
+    if (self.pageType == HOME_TWEETS_TAG) {
+        [self getHomeTimeline];
+    }
+    else if (self.pageType == MENTIONS_TWEETS_TAG) {
+        [self getMethionsTimeline];
+    }
 }
 
 - (void)getHomeTimeline {
@@ -50,9 +61,16 @@
     }];
 }
 
+- (void)getMethionsTimeline {
+    [[TwitterClient sharedInstance] mentionsTimelineWithParams:nil completion:^(NSArray *tweets, NSError *error) {
+        self.tweets = [[NSMutableArray alloc] initWithArray:tweets];
+        [self.tableView reloadData];
+    }];
+}
+
 - (void)refreshTable {
     [self.refreshControl endRefreshing];
-    [self getHomeTimeline];
+    [self reloadView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -69,11 +87,11 @@
 }
 
 - (IBAction)onTap:(UITapGestureRecognizer *)sender {
-    [self.delegate movePanelToOriginalPosition];
+    [self.delegate movePanelToOriginalPosition:self.pageType isReload:NO];
 }
 
 - (IBAction)onDrag:(UIPanGestureRecognizer *)sender {
-    [self.delegate movePanelRight];
+    [self.delegate movePanelRight:self.pageType];
 }
 
 

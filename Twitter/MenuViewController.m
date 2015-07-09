@@ -74,6 +74,12 @@
         case 0:
             [self presentViewController:[[ProfileViewController alloc] init] animated:YES completion:nil];
             break;
+        case 1:
+            [self.delegate showHomeTimeline];
+            break;
+        case 2:
+            [self.delegate showMentionsTimeline];
+            break;
             
         default:
             break;

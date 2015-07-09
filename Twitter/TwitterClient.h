@@ -21,5 +21,6 @@
 - (void)retweetWithId:(NSString *)retweetId completion:(void (^)(Tweet *tweet, NSError *error))completion;
 - (void)favoriteWithParams:(NSDictionary *)params completion:(void (^)(Tweet *tweet, NSError *error))completion;
 - (void)userProfile:(NSDictionary *)params completion:(void (^)(User *user, NSError *error))completion;
+- (void)mentionsTimelineWithParams:(NSDictionary *)params completion:(void (^)(NSArray *tweets, NSError *error))completion;
 
 @end

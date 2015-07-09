@@ -14,6 +14,10 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onProfileTap)];
+    [tap setNumberOfTouchesRequired:1];
+    [tap setNumberOfTapsRequired:1];
+    [self.profileImageView addGestureRecognizer:tap];
 }
 
 - (void)didLoad {
@@ -65,7 +69,7 @@
     [self.delegate TweetCell:self favoriteTweet:self.tweet];
 }
 
-- (IBAction)onTapProfileImage:(UITapGestureRecognizer *)sender {
+- (void)onProfileTap {
     [self.delegate TweetCell:self userProfile:self.tweet.user];
 }
 

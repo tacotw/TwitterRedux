@@ -12,6 +12,9 @@
 
 @protocol MenuViewControllerDelegate <NSObject>
 
+- (void)showHomeTimeline;
+- (void)showMentionsTimeline;
+
 @end
 
 @interface MenuViewController : UIViewController
